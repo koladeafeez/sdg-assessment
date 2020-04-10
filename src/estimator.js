@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable max-len */
 /* eslint-disable no-shadow */
 /* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
@@ -47,6 +48,12 @@ const covid19ImpactEstimator = (data) => {
   const hospitalBedsForPatients = Math.ceil(input.totalHospitalBeds * (35 / 100));
   const hospitalBedsForPatientsImpact = hospitalBedsForPatients - impactWorstCasesByRequestedTime;
   const hospitalBedsForPatientsSevere = hospitalBedsForPatients - severeWorstCasesByRequestedTime;
+  const impactICUCasesByRequestedTime = Math.floor(impactInfectionsByRequestedTime * (5 / 100));
+  const severeICUCasesByRequestedTime = Math.floor(severeInfectionsByRequestedTime * (5 / 100));
+  const impactVentilatorCasesByRequestedTime = Math.floor(impactInfectionsByRequestedTime * (2 / 100));
+  const severeVentilatorCasesByRequestedTime = Math.floor(severeInfectionsByRequestedTime * (2 / 100));
+  const impactDollarInFlight = impactInfectionsByRequestedTime * input.region.avgDailyIncomeInUSD * input.region.avgDailyIncomePopulation * periodToDays;
+  const severeDollarInFlight = severeInfectionsByRequestedTime * input.region.avgDailyIncomeInUSD * input.region.avgDailyIncomePopulation * periodToDays;
 
   return {
     data: input, // the input data you got
@@ -54,13 +61,19 @@ const covid19ImpactEstimator = (data) => {
       currentlyInfected: impactCurrentlyInfected,
       infectionsByRequestedTime: impactInfectionsByRequestedTime,
       severeCasesByRequestedTime: impactWorstCasesByRequestedTime,
-      hospitalBedsByRequestedTime: hospitalBedsForPatientsImpact
+      hospitalBedsByRequestedTime: hospitalBedsForPatientsImpact,
+      casesForICUByRequestedTime: impactICUCasesByRequestedTime,
+      casesForVentilatorsByRequestedTime: impactVentilatorCasesByRequestedTime,
+      dollarsInFlight: impactDollarInFlight
     }, // your best case estimation
     severeImpact: {
       currentlyInfected: severeCurrentlyInfected,
       infectionsByRequestedTime: severeInfectionsByRequestedTime,
       severeCasesByRequestedTime: severeWorstCasesByRequestedTime,
-      hospitalBedsByRequestedTime: hospitalBedsForPatientsSevere
+      hospitalBedsByRequestedTime: hospitalBedsForPatientsSevere,
+      casesForICUByRequestedTime: severeICUCasesByRequestedTime,
+      casesForVentilatorsByRequestedTime: severeVentilatorCasesByRequestedTime,
+      dollarsInFlight: severeDollarInFlight
     } // your severe case estimation
   };
 };
