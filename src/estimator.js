@@ -42,15 +42,25 @@ const covid19ImpactEstimator = (data) => {
   const cycles = Math.floor(periodToDays / 3);
   const impactInfectionsByRequestedTime = impactCurrentlyInfected * (2 ** cycles);
   const severeInfectionsByRequestedTime = severeCurrentlyInfected * (2 ** cycles);
+  const impactWorstCasesByRequestedTime = Math.floor(impactInfectionsByRequestedTime * (15 / 100));
+  const severeWorstCasesByRequestedTime = Math.floor(severeInfectionsByRequestedTime * (15 / 100));
+  const hospitalBedsForPatients = Math.floor(input.totalHospitalBeds * (35 / 100));
+  const hospitalBedsForPatientsImpact = hospitalBedsForPatients - impactWorstCasesByRequestedTime;
+  const hospitalBedsForPatientsSevere = hospitalBedsForPatients - severeWorstCasesByRequestedTime;
+
   return {
     data: input, // the input data you got
     impact: {
       currentlyInfected: impactCurrentlyInfected,
-      infectionsByRequestedTime: impactInfectionsByRequestedTime
+      infectionsByRequestedTime: impactInfectionsByRequestedTime,
+      severeCasesByRequestedTime: impactWorstCasesByRequestedTime,
+      hospitalBedsByRequestedTime: hospitalBedsForPatientsImpact
     }, // your best case estimation
     severeImpact: {
       currentlyInfected: severeCurrentlyInfected,
-      infectionsByRequestedTime: severeInfectionsByRequestedTime
+      infectionsByRequestedTime: severeInfectionsByRequestedTime,
+      severeCasesByRequestedTime: severeWorstCasesByRequestedTime,
+      hospitalBedsByRequestedTime: hospitalBedsForPatientsSevere
     } // your severe case estimation
   };
 };
