@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Covid19 estimator">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+
+		<link rel="stylesheet" href="./main.css">
+
+		
+		</style>
+</head>
+<body>
+	<h1>Covid19 Estimator</h1>
+
+	<article id="data" ></article>
+	<main>
+		
+		<article id="summary">
+		
+
+
+			<p>There’s currently no vaccine to prevent coronavirus disease (COVID-19).
+				You can protect yourself and help prevent spreading the virus to others if you:</p>
+				<h3>Do</h3>
+				<ul>
+				<li>Wash your hands regularly for 20 seconds, with soap and water or alcohol-based hand rub</li>
+				<li>Cover your nose and mouth with a disposable tissue or flexed elbow when you cough or sneeze</li>
+				<li>Avoid close contact (1 meter or 3 feet) with people who are unwell</li>
+				<li>Stay home and self-isolate from others in the household if you feel unwell</li>
+			</ul>
+				<h3>Don't</h3>
+			<ul>
+				<li>Touch your eyes, nose, or mouth if your hands are not clean</li>
+			</ul>
+
+			<h3>
+				How To Use
+			</h3>
+			 <p>input your data into the fields below:</p>
+       <i>--The avg Daily Income By Population is the daily income of Majority of the population.</i>
+		</article>
+			
+			<form>
+				<fieldset>
+					<legend>Region & Economy</legend>
+					<label for="region" class="region">Region</label>
+					<select name="region"  id="region">
+						<option value=""> Africa</option>
+						<option value=""> Asia</option>
+						<option value="">Europe</option>
+						<option value="">North America</option>
+						<option value="">South America</option>
+						<option value="">Oceania</option>
+						<option value="">Antatica</option>
+						<option value="">Australia</option>
+					</select> 
+					<br/>
+					<label for="avgDailyIncomeInUSD" id="avgIn"> Avg Daily Income ($):</label>
+						<input type="number" name="avgDailyIncomeInUSD" id="avgDailyIncomeInUSD" data-avg-income required aria-required="true"> 
+					
+					<br>
+					<label for="avgPopulationIncome" id="avgPop"> AvgDaily Income By Pop. ($):
+						<input type="number" name="avgPopulationIncome" id="avgPopulationIncome" data-avg-population-income required aria-required="true">
+					</label>
+				</fieldset>
+				<fieldset>
+					<legend>Cases & Infrastructure</legend>
+					<label for="elapse-time"> Time To Elapse
+					<input type="number" name="elapse-time" id="elapse-time" data-time-to-elapse required aria-required="true">
+					</label>
+					<select name="" id="elapseTime" data-period-type>Period Type
+						<option value="days"> Days</option>
+						<option value="weeks"> Week(s)</option>
+						<option value="months">Month(s)</option>
+
+					</select>
+					<br>
+					<label for="reported-cases"> Reported Cases:
+						<input type="text" required name="reported-cases" id="reported-cases" data-reported-cases aria-required="true">
+					</label>
+					<br>
+					<label for="population"> Population
+						<input type="number" id="population" data-population ="value" required aria-required="true">
+					</label>
+					<br>
+					<label for="total-hospital-beds"> Total Hospitals Beds:
+						<input type="number" name="total-hospital-beds" id="total-hospital-beds" data-total-hospital-beds required aria-required="true">
+					</label>
+
+				</fieldset>
+
+				<button id="estimate-data" type="submit" data-go-estimate> Estimate Impact </button>
+			</form>
+		</main>
+<footer>
+		<p>stay safe</p>
+</footer>
+
+		<script type="module" src="../src/data.js"></script>
+		<script type="module" src="src/estimator.js"></script>
+</body>
+</html>
+
