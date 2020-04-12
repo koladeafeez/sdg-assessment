@@ -1,5 +1,8 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable max-len */
 
-import { getData, submit } from '../data.js';
+
+// import { getData, submit } from '../data.js';
 
 // const form = document.querySelector('form');
 // const main = document.querySelector('main');
