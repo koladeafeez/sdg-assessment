@@ -10,7 +10,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
 /* eslint-disable linebreak-style */
-import { getData, submit } from './data.js';
+import { getData, submit } from '../data.js';
 
 const form = document.querySelector('form');
 const main = document.querySelector('main');
