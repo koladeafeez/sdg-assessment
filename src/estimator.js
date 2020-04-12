@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable import/prefer-default-export */
 /* eslint-disable max-len */
 /* eslint-disable import/extensions */
 
@@ -18,7 +19,7 @@ function covertToDays(timeFormat, timeToElapse) {
 }
 
 
-const covid19ImpactEstimator = (data) => {
+export const covid19ImpactEstimator = (data) => {
   const input = data;
   const impactCurrentlyInfected = input.reportedCases * 10;
   const severeCurrentlyInfected = input.reportedCases * 50;
@@ -62,5 +63,3 @@ const covid19ImpactEstimator = (data) => {
     } // your severe case estimation
   };
 };
-
-export default covid19ImpactEstimator;
