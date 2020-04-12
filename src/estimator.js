@@ -19,7 +19,7 @@ function covertToDays(timeFormat, timeToElapse) {
 }
 
 
-export const covid19ImpactEstimator = (data) => {
+const covid19ImpactEstimator = (data) => {
   const input = data;
   const impactCurrentlyInfected = input.reportedCases * 10;
   const severeCurrentlyInfected = input.reportedCases * 50;
@@ -63,3 +63,5 @@ export const covid19ImpactEstimator = (data) => {
     } // your severe case estimation
   };
 };
+
+export default covid19ImpactEstimator;
